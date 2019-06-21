@@ -2,7 +2,7 @@
 <template>
   <div class="side_nav" :style="flexStyle">
     <header>
-      <h4 v-show="titleShow" class="title" @click="$router.push({name:'indexPage'})">后台管理</h4>
+      <h4 v-show="titleShow" class="title" @click="$router.push({name:'indexPage'})">Welcome ！</h4>
       <i :class="iconClass" @click="hanleClick()"></i>
       <div style="overflow:hidden;width: 180px;min-height: 100px; margin: 50px auto 0;">
         <div class="user_info" v-show="titleShow">
@@ -111,13 +111,14 @@
         line-height: 50px;
         width: calc(100% - 25px);
         position: absolute;
-        color: rgb(97, 93, 93);
+        color: #388efd;
+        font-weight: bold;
         cursor:pointer;
       }
 
       i {
         font-size: 25px;
-        color: rgb(97, 93, 93);
+        color: #388efd;
         line-height: 50px;
         position: absolute;
         right: 10px;

@@ -76,6 +76,7 @@
 
     .menu_title {
       overflow: hidden;
+      cursor: pointer;
       
       p {
         text-align: left;

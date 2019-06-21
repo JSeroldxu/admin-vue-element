@@ -4,7 +4,7 @@
     <sideNav />
     <main>
       <indexHeader></indexHeader>
-      <router-view></router-view>
+      <router-view class="change_view"></router-view>
     </main>
   </div>
 </template>
@@ -36,7 +36,9 @@ export default {
       overflow: auto;
       height: 100%;
       background: #f8f8f8;
-      
+      .change_view{
+        padding:10px;
+      }
     }
 }
 </style>
