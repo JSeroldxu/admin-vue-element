@@ -2,7 +2,7 @@
 <template>
   <div class="side_nav" :style="flexStyle">
     <header>
-      <h4 v-show="titleShow" class="title" @click="$router.push({name:'indexPage'})">Welcome ！</h4>
+      <h4 v-show="titleShow" class="title_h4" @click="$router.push({name:'indexPage'})">Welcome ！</h4>
       <i :class="iconClass" @click="hanleClick()"></i>
       <div style="overflow:hidden;width: 180px;min-height: 100px; margin: 50px auto 0;">
         <div class="user_info" v-show="titleShow">
@@ -19,9 +19,9 @@
     </header>
     <section>
       <sideNavMenu :icons="iconShow" icon="el-icon-mobile" :active="isMenuActive('/user')" :open="isMenuOpen('/user')">
-        <sideNavRouterLink to="/user/manage">用户管理</sideNavRouterLink>
-        <sideNavRouterLink to="/user/manage">用户列表</sideNavRouterLink>
-        <sideNavRouterLink to="/user/manage">用户列表</sideNavRouterLink>
+        <sideNavRouterLink to="/tailor">裁剪屏幕</sideNavRouterLink>
+        <sideNavRouterLink to="/richExample">富文本编辑器</sideNavRouterLink>
+        <sideNavRouterLink to="/vueCropper">裁剪图片</sideNavRouterLink>
         <sideNavRouterLink to="/user/manage">用户列表</sideNavRouterLink>
       </sideNavMenu>
 
@@ -106,7 +106,7 @@
       position: relative;
       overflow: hidden;
 
-      h4.title {
+      h4.title_h4 {
         text-align: center;
         line-height: 50px;
         width: calc(100% - 25px);

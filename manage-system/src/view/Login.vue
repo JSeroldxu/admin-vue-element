@@ -8,11 +8,11 @@
       <div class="login_info">
         <div class="user_name">
           <p>账号：</p>
-          <input type="text" class="input_">
+          <input type="text" class="input_" v-model="account">
         </div>
         <div class="pass_word">
           <p>密码：</p>
-          <input type="password" class="input_" @keyup.enter="Login()">
+          <input type="password" class="input_"  v-model="password" @keyup.enter="Login()">
         </div>
       </div>
       <div class="btn_submit">
@@ -30,7 +30,10 @@ import randowPaopao from '../components/randowPaopao'
       randowPaopao
     },
     data() {
-      return {};
+      return {
+        account:'',
+        password:'',
+      };
     },
 
     computed: {},
@@ -39,9 +42,17 @@ import randowPaopao from '../components/randowPaopao'
 
     methods: {
       Login() {
-        this.$router.push({
+        this.$api.admin.login(data=>{
+          console.log(data)
+          window.sessionStorage.setItem('admin.token',data.token)
+          this.$router.push({
           name: 'layoutIndex'
         })
+        },{
+          account:this.account,
+          password:this.password,
+        })
+        
       }
     }
   }

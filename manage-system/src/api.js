@@ -4,9 +4,9 @@ import CryptoJS from 'crypto-js'
 
 Vue.prototype.$ajax = axios;
 
-axios.defaults.baseURL = '***'; //接口url
+axios.defaults.baseURL = 'http://10.10.10.166:8080/'; //接口url
 
-axios.defaults.headers.post['Con  tent-Type'] = 'application/json;charset=UTF-8';
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 /**
  *接口,调用方式 
   this.$api.admin.url(data=>{
@@ -18,17 +18,27 @@ axios.defaults.headers.post['Con  tent-Type'] = 'application/json;charset=UTF-8'
 export const admin = {
   url: (callback, data, error) => {
     let request = {
-      url: '**',    //接口名
+      url: '/sts/credentials/oss',    //接口名
       method: 'post',
       data: data,
     };
     ajax(callback, request, error);
-  }
+  },
+  login: (callback, data, error) => {   //登录
+    let request = {
+      url: '/admin/login',
+      method: 'post',
+      data: data,
+    };
+    ajax(callback, request, error);
+  },
 };
 
 
+
+
 function ajax(callback, request, error) {
-  let token = window.sessionStorage.getItem('card.token');
+  let token = window.sessionStorage.getItem('admin.token');
   let api = request.url;
   let version = '1.0.0';
   let device = 'web';
@@ -38,6 +48,7 @@ function ajax(callback, request, error) {
   if (!request.headers) {
     request.headers = {};
   }
+
   request.headers['Authorization-Device'] = device;
   request.headers['Authorization-Version'] = version;
   request.headers['Authorization-Timestamp'] = timestamp;

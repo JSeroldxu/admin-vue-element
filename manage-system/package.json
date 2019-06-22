@@ -17,10 +17,12 @@
     "babel-polyfill": "^6.26.0",
     "crypto-js": "^3.1.9-1",
     "es6-promise": "^4.2.8",
+    "html2canvas": "^1.0.0-rc.3",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "tinymce": "^5.0.5",
     "vue": "^2.5.2",
+    "vue-cropper": "^0.4.6",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

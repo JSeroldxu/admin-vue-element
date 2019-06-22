@@ -3,13 +3,15 @@
   <header>
     <h3>{{ $route.meta.title }}</h3>
     <i class="el-icon-arrow-down setting_icon" @click="dialogShow = !dialogShow"></i>
+    <i class="el-icon-camera" @click="tailorClick()" title="裁剪屏幕"></i>
     <i :class="weatherClass" class="weather_icon"></i>
-    <div class="cloud" >
+    <div class="cloud">
+
       <h4>{{ nowTemperature }}</h4>
       <p>{{ city }} {{ lowTemperature }}~{{ highTemperature }}</p>
     </div>
-    <div class="mask" @click="hidePanel"  v-show="dialogShow">
-      <div class="table_" v-show="dialogShow" >
+    <div class="mask" @click="hidePanel" v-show="dialogShow">
+      <div class="table_" v-show="dialogShow">
         <ul>
           <li><i class="el-icon-setting"></i>修改密码</li>
           <li><i class="el-icon-unlock"></i>退出登录</li>
@@ -20,6 +22,7 @@
 </template>
 
 <script>
+  import html2canvas from 'html2canvas'
   export default {
     data() {
       return {
@@ -82,6 +85,22 @@
             this.dialogShow = false;
           }
         }
+      },
+      // 截屏并下载
+      tailorClick() {
+        let app = document.getElementById('app')
+        let box = this.$refs.tailor;
+        html2canvas(app, {
+          backgroundColor: '#fff',
+          useCORS: true
+        }).then((canvas) => {
+          let img = canvas.toDataURL('image/png')
+          var a = document.createElement('a');
+          a.href = img;
+          a.download = img;
+          a.click();
+          return false;
+        })
       }
     }
   }
@@ -91,26 +110,39 @@
     height: 50px;
     background: #388efd;
     padding-right: 30px;
-    h3{
+
+    h3 {
       display: inline-block;
       line-height: 50px;
       padding-left: 25px;
       color: #fff;
     }
-    .mask{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.1);
-        z-index: 12;
+
+    .mask {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 12;
     }
+
+    i.el-icon-camera {
+      float: right;
+      line-height: 50px;
+      margin-left: 10px;
+      color: #fff;
+      cursor: pointer;
+    }
+
     .cloud {
-      width: 200px;
+      width: 150px;
       height: 100%;
       float: right;
       color: #fff;
       text-align: right;
       margin: 0 15px 0 0;
+
+
 
       h4 {
         font-size: 25px;
@@ -137,10 +169,11 @@
 
     i.setting_icon {
       font-size: 15px;
-      margin: 20px;
+      margin: 0 20px;
       cursor: pointer;
       color: #fff;
       float: right;
+      line-height: 50px;
     }
   }
 
@@ -181,7 +214,7 @@
       }
 
       li:hover {
-        background: rgba(201, 203, 206,.3);
+        background: rgba(201, 203, 206, .3);
         //  text-shadow: 5px 2px 2px #fff;
       }
     }

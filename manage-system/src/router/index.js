@@ -33,7 +33,31 @@ export default new Router({
             title:'用户管理'
           },
           component: resolve => require(['@/view/userManage'],resolve)
-        }
+        },
+        {
+          path: '/tailor',
+          name: 'tailor',
+          meta:{
+            title:'裁剪屏幕'
+          },
+          component: resolve => require(['@/components/tailor'],resolve)
+        },
+        {
+          path: '/richExample',
+          name: 'richExample',
+          meta:{
+            title:'富文本组件'
+          },
+          component: resolve => require(['@/components/richExample'],resolve)
+        },
+        {
+          path: '/vueCropper',
+          name: 'vueCropper',
+          meta:{
+            title:'裁剪图片'
+          },
+          component: resolve => require(['@/components/vueCropper'],resolve)
+        },
       ]
     },
   ]
