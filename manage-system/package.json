@@ -20,7 +20,7 @@
     "html2canvas": "^1.0.0-rc.3",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
-    "tinymce": "^5.0.5",
+    "tinymce": "^5.2.2",
     "vue": "^2.5.2",
     "vue-cropper": "^0.4.6",
     "vue-router": "^3.0.1"
